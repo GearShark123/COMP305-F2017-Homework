@@ -1,12 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artificial Intelligence", "Artificial Intelligence.csproj", "{836ECB77-8562-7D91-BBBC-9FAF9F135E02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{836ECB77-8562-7D91-BBBC-9FAF9F135E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{836ECB77-8562-7D91-BBBC-9FAF9F135E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{836ECB77-8562-7D91-BBBC-9FAF9F135E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{836ECB77-8562-7D91-BBBC-9FAF9F135E02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
