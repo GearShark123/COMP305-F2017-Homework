@@ -20,12 +20,112 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A))
+        //if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A))
+        //{
+        //    moveHorizontal = Input.GetAxis("Horizontal");
+        //    moveVertical = Input.GetAxis("Vertical");
+
+        //    movement = new Vector2(moveHorizontal, moveVertical);
+
+        //    // Limits max speed
+        //    if (rbody.velocity.magnitude < speed)
+        //    {
+        //        rbody.AddForce(movement * speed);
+        //    }
+        //}
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
             moveHorizontal = Input.GetAxis("Horizontal");
             moveVertical = Input.GetAxis("Vertical");
 
             movement = new Vector2(moveHorizontal, moveVertical);
+
+            // Limits max speed
+            if (rbody.velocity.magnitude < speed)
+            {
+                rbody.AddForce(movement * speed);
+            }
+        }
+        else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
+
+            movement = new Vector2(moveHorizontal, moveVertical);
+
+            // Limits max speed
+            if (rbody.velocity.magnitude < speed)
+            {
+                rbody.AddForce(movement * speed);
+            }
+        }
+        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        {
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
+
+            movement = new Vector2(moveHorizontal, moveVertical);
+
+            // Limits max speed
+            if (rbody.velocity.magnitude < speed)
+            {
+                rbody.AddForce(movement * speed);
+            }
+        }
+        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+        {
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
+
+            movement = new Vector2(moveHorizontal, moveVertical);
+
+            // Limits max speed
+            if (rbody.velocity.magnitude < speed)
+            {
+                rbody.AddForce(movement * speed);
+            }
+        }
+        else if (Input.GetKey(KeyCode.W))
+        {            
+            moveVertical = Input.GetAxis("Vertical");
+
+            movement = new Vector2(0, moveVertical);
+
+            // Limits max speed
+            if (rbody.velocity.magnitude < speed)
+            {
+                rbody.AddForce(movement * speed);
+            }
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            moveVertical = Input.GetAxis("Vertical");
+
+            movement = new Vector2(0, moveVertical);
+
+            // Limits max speed
+            if (rbody.velocity.magnitude < speed)
+            {
+                rbody.AddForce(movement * speed);
+            }
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            moveHorizontal = Input.GetAxis("Horizontal");
+
+            movement = new Vector2(moveHorizontal, 0);
+
+            // Limits max speed
+            if (rbody.velocity.magnitude < speed)
+            {
+                rbody.AddForce(movement * speed);
+            }
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            moveHorizontal = Input.GetAxis("Horizontal");
+
+            movement = new Vector2(moveHorizontal, 0);
 
             // Limits max speed
             if (rbody.velocity.magnitude < speed)
