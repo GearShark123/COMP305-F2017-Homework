@@ -5,12 +5,10 @@ using UnityEngine;
 public class EnemyControl : MonoBehaviour
 {
     private Rigidbody2D rbody;
-    private float moveHorizontal;
-    private float moveVertical;
-    private Vector2 movement;
     public Transform waypoint;
     public Transform waypoint2;
-    public float speed;
+    public Transform player;
+    public float speed;             // 3
     private float time = 0f;
     private float timeChange = 0.1f;
     private float timeLimit = 10f;
@@ -32,14 +30,20 @@ public class EnemyControl : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            state = "Patrol";
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //print(collision.name);
-        if (collision.name == "Blue Circle")
-        {
-            print(collision.name);
+        if (collision.tag == "Player")
+        {           
             state = "Attack";
-        }
+        }        
     }
 
     // Update is called once per frame
@@ -56,8 +60,7 @@ public class EnemyControl : MonoBehaviour
     }
 
     void Attack()
-    {
-        GameObject player = GameObject.Find("Blue Circle");
+    {        
         float step = speed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, step);
     }
