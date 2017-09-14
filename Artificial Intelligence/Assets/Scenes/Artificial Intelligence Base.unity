@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 587807517}
   - component: {fileID: 587807516}
   - component: {fileID: 587807515}
+  - component: {fileID: 587807518}
   m_Layer: 0
   m_Name: 'Green Circle '
   m_TagString: Untagged
@@ -495,6 +496,21 @@ MonoBehaviour:
   waypoint: {fileID: 351589880}
   waypoint2: {fileID: 320641337}
   speed: 2
+--- !u!58 &587807518
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587807512}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!1 &598172465
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,10 +15,12 @@ public class EnemyControl : MonoBehaviour
     private float timeChange = 0.1f;
     private float timeLimit = 10f;
     private bool isForwards;
+    private string state;
 
     // Use this for initialization
     void Start()
     {
+        state = "Patrol";
         if (Random.Range(0, 2) == 0)
         {
             isForwards = true;
@@ -30,8 +32,37 @@ public class EnemyControl : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        //print(collision.name);
+        if (collision.name == "Blue Circle")
+        {
+            print(collision.name);
+            state = "Attack";
+        }
+    }
+
     // Update is called once per frame
     void Update()
+    {
+        if (state == "Patrol")
+        {
+            Patrol();
+        }
+        else if (state == "Attack")
+        {
+            Attack();
+        }
+    }
+
+    void Attack()
+    {
+        GameObject player = GameObject.Find("Blue Circle");
+        float step = speed * Time.deltaTime;
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, step);
+    }
+
+    void Patrol()
     {
         if (isForwards == true)
         {
@@ -58,8 +89,9 @@ public class EnemyControl : MonoBehaviour
                 {
                     isForwards = true;
                     time = 0f;
-                }                
+                }
             }
         }
     }
+
 }
