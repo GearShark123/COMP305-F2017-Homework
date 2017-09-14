@@ -151,8 +151,10 @@ GameObject:
   m_Component:
   - component: {fileID: 294512516}
   - component: {fileID: 294512515}
+  - component: {fileID: 294512520}
   - component: {fileID: 294512518}
   - component: {fileID: 294512517}
+  - component: {fileID: 294512519}
   m_Layer: 0
   m_Name: 'Pink Circle '
   m_TagString: Untagged
@@ -260,6 +262,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.556, y: 0.556}
   m_EdgeRadius: 0
+--- !u!58 &294512519
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 294512514}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
+--- !u!114 &294512520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 294512514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23341556e12b0e14dacff4418e502750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoint: {fileID: 955623143}
+  waypoint2: {fileID: 469185242}
+  player: {fileID: 598172467}
+  speed: 2
 --- !u!1 &320641336
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,8 +782,10 @@ GameObject:
   m_Component:
   - component: {fileID: 776619007}
   - component: {fileID: 776619006}
+  - component: {fileID: 776619011}
   - component: {fileID: 776619009}
   - component: {fileID: 776619008}
+  - component: {fileID: 776619010}
   m_Layer: 0
   m_Name: Orange Circle
   m_TagString: Untagged
@@ -859,6 +893,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.556, y: 0.556}
   m_EdgeRadius: 0
+--- !u!58 &776619010
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 776619005}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
+--- !u!114 &776619011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 776619005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23341556e12b0e14dacff4418e502750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoint: {fileID: 1915780432}
+  waypoint2: {fileID: 564789736}
+  player: {fileID: 598172467}
+  speed: 2
 --- !u!1 &845072978
 GameObject:
   m_ObjectHideFlags: 0
