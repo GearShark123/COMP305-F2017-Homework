@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GMControl : MonoBehaviour
 {
@@ -39,15 +40,6 @@ public class GMControl : MonoBehaviour
         }        
     }
 
-    public void DisableCheckpointDrop()
-    {
-        isNotBtn = false;
-    }
-    public void EnableCheckpointDrop()
-    {
-        isNotBtn = true;
-    }
-
     public void Begin()
     {
         counter = 0;
@@ -56,4 +48,18 @@ public class GMControl : MonoBehaviour
             ship.position = Vector3.MoveTowards(ship.position, item.position, 3 * Time.deltaTime);
         }
     }
+
+    public void Rest()
+    {
+        SceneManager.LoadScene("Cutscenes Upgrade 1");
+    }
+
+    public void DisableCheckpointDrop()
+    {
+        isNotBtn = false;
+    }
+    public void EnableCheckpointDrop()
+    {
+        isNotBtn = true;
+    }    
 }
