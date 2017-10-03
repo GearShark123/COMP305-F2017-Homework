@@ -12,7 +12,7 @@ public class PlanetControl : MonoBehaviour
     public float speed;             // 3
     private float time = 0f;
     private float timeChange = 0.1f;
-    private float timeLimit = 10f;
+    private float timeLimit = 5f;
 
     private int state;
 
@@ -35,36 +35,41 @@ public class PlanetControl : MonoBehaviour
         {
             timeChange = 0.04f;
             time += timeChange;
-            EaseIn();            
+            EaseOut();
         }
         else if (state == 3)
         {
             timeChange = 0.04f;
             time += timeChange;
-            EaseOut();
+            EaseIn();
+        }
+        else if (state == 4)
+        {
+            time += timeChange;
+            EaseInOut();
         }
     }
 
     void Linear()
     {
         speed = 5;
-        float step = speed * Time.deltaTime;        
-        transform.position = Vector3.MoveTowards(transform.position, waypoint2.position, step);        
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, waypoint2.position, step);
         if (transform.position == waypoint2.position)
-        {       
+        {
             time += timeChange;
             if (time >= timeLimit)
-            {                
+            {
                 time = 0f;
                 state = 2;
-            }            
+            }
         }
     }
 
-    void EaseIn()
-    {       
-        speed = 5;
-        float step = ((speed/time) * Time.deltaTime);   
+    void EaseOut()
+    {
+        speed = 1;
+        float step = ((speed * time) * Time.deltaTime);
         transform.position = Vector3.MoveTowards(transform.position, waypoint.position, step);
         if (transform.position == waypoint.position)
         {
@@ -73,14 +78,14 @@ public class PlanetControl : MonoBehaviour
             {
                 time = 0f;
                 state = 3;
-            }            
+            }
         }
     }
 
-    void EaseOut()
+    void EaseIn()
     {
         speed = 5;
-        float step = ((speed / time) * Time.deltaTime);     
+        float step = ((speed / time) * Time.deltaTime);
         transform.position = Vector3.MoveTowards(transform.position, waypoint2.position, step);
         if (transform.position == waypoint2.position)
         {
@@ -93,4 +98,29 @@ public class PlanetControl : MonoBehaviour
         }
     }
 
+    void EaseInOut()
+    {
+        if (transform.position.x > waypoint.position.x / 2)
+        {
+            timeChange = 0.04f;
+            speed = 3;
+            float step = ((speed / time) * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, waypoint.position / 2, step);
+            if (transform.position.x == waypoint.position.x / 2)
+            {
+                time = 0f;
+            }
+        }
+        else
+        {
+            timeChange = 0.04f;
+            speed = 1;
+            float step = ((speed * time) * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, waypoint.position, step);
+            if (transform.position == waypoint.position)
+            {
+                state = 1;
+            }
+        }
+    }
 }
