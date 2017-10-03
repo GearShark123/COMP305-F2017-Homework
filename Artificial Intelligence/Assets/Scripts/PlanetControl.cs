@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlanetControl : MonoBehaviour
 {
 
-    private Rigidbody2D rbody;
+    //private Rigidbody2D rbody;
     public Transform waypoint;
     public Transform waypoint2;
 
@@ -20,7 +20,7 @@ public class PlanetControl : MonoBehaviour
     void Start()
     {
         state = 1;
-        rbody = GetComponent<Rigidbody2D>();
+        //rbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
