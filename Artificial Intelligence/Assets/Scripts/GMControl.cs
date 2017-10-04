@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class GMControl : MonoBehaviour
 {
@@ -13,18 +15,26 @@ public class GMControl : MonoBehaviour
 
     public GameObject checkpointMarker;
     public Transform ship;
-    private float counter;
+    public Button startBtn;
+    public Transform newRotation;
+
+    private int counter;
+    private int counter2;
+
     public bool isNotBtn;
+    public bool goNext;
     private List<Transform> checkpointList = new List<Transform>();
 
     void Start()
     {
-        isNotBtn = true;       
+        isNotBtn = true;
+        startBtn.interactable = false;
+        goNext = false;
     }
 
     // Update is called once per frame
     void Update()
-    {    
+    {
         // Testing
         //mousePosition = Input.mousePosition;
         //screenToWorldPoint_Position = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
@@ -37,21 +47,42 @@ public class GMControl : MonoBehaviour
             GameObject nextcheckpointMarker = Instantiate(checkpointMarker, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, this.transform.position.z + 10f)), this.transform.rotation);
             nextcheckpointMarker.name = "Checkpoint Marker " + counter;
             checkpointList.Add(nextcheckpointMarker.transform);
-        }        
+        }
+        if (counter >= 3)
+        {
+            EnableBtn();
+        }
+
+        if (goNext == true && counter2 < checkpointList.Count)
+        {
+            ship.rotation = Quaternion.RotateTowards(ship.rotation, newRotation.rotation, 10f);
+            ship.position = Vector3.MoveTowards(ship.position, checkpointList[counter2].position, 3 * Time.deltaTime);
+            if (ship.position == checkpointList[counter2].position)
+            {
+                counter2 += 1;
+                if (counter2 < checkpointList.Count)
+                {
+                    newRotation.rotation = Quaternion.FromToRotation(Vector3.up, checkpointList[counter2].position - ship.position);
+                }
+            }
+        }
     }
 
     public void Begin()
     {
-        counter = 0;
-        foreach (var item in checkpointList)
-        {
-            ship.position = Vector3.MoveTowards(ship.position, item.position, 3 * Time.deltaTime);
-        }
+        counter2 = 0;
+        goNext = true;
+        newRotation.rotation = Quaternion.FromToRotation(Vector3.up, checkpointList[0].position - ship.position);
     }
 
     public void Rest()
     {
         SceneManager.LoadScene("Cutscenes Upgrade 1");
+    }
+
+    void EnableBtn()
+    {
+        startBtn.interactable = true;
     }
 
     public void DisableCheckpointDrop()
@@ -61,5 +92,5 @@ public class GMControl : MonoBehaviour
     public void EnableCheckpointDrop()
     {
         isNotBtn = true;
-    }    
+    }
 }
